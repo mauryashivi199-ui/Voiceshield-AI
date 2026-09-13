@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initVisualizerCanvas();
     setupWebSocket();
     setInterval(refreshStats, 4000);
+    window.addEventListener('resize', initVisualizerCanvas);
 });
 
 // Switch Dashboard Tabs

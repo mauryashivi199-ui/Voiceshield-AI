@@ -15,42 +15,53 @@
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen antialiased selection:bg-cyan-500 selection:text-black">
 
     <!-- Top Navigation -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                    <span class="text-xl">🛡️</span>
-                </div>
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">VoiceShield-AI</span>
-                        <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800 font-mono">v2.0</span>
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-0 sm:h-16 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-0">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 flex-shrink-0">
+                        <span class="text-lg sm:text-xl">🛡️</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 font-medium">SIH26104 • AICTE Cyber Security Cell</p>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">VoiceShield-AI</span>
+                            <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800 font-mono">v2.0</span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-slate-400 font-medium">SIH26104 • AICTE Cyber Security Cell</p>
+                    </div>
+                </div>
+
+                <!-- Status Badge (Visible on Mobile Top-Right) -->
+                <div class="flex items-center space-x-2 bg-emerald-950/40 border border-emerald-800/60 px-2.5 py-1 rounded-full sm:hidden">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-[10px] font-mono font-medium text-emerald-400">ONLINE</span>
                 </div>
             </div>
 
-            <!-- Navigation Tabs -->
-            <nav class="hidden md:flex items-center space-x-1 bg-slate-950/60 p-1.5 rounded-xl border border-slate-800">
-                <button onclick="switchTab('live-monitor')" id="tab-live-monitor" class="tab-btn active-tab px-4 py-1.5 rounded-lg text-xs font-semibold transition-all">
-                    🎙️ Live Audio Scanner
+            <!-- Navigation Tabs (Horizontal Scroll on Mobile) -->
+            <nav class="flex items-center space-x-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none bg-slate-950/60 p-1 sm:p-1.5 rounded-xl border border-slate-800 text-nowrap">
+                <button onclick="switchTab('live-monitor')" id="tab-live-monitor" class="tab-btn active-tab px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap">
+                    🎙️ Live Scanner
                 </button>
-                <button onclick="switchTab('file-forensics')" id="tab-file-forensics" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
+                <button onclick="switchTab('file-forensics')" id="tab-file-forensics" class="tab-btn px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
                     📁 Deep Forensics
                 </button>
-                <button onclick="switchTab('blockchain-ledger')" id="tab-blockchain-ledger" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
-                    ⛓️ Blockchain Ledger
+                <button onclick="switchTab('blockchain-ledger')" id="tab-blockchain-ledger" class="tab-btn px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
+                    ⛓️ Blockchain
                 </button>
-                <button onclick="switchTab('incidents-log')" id="tab-incidents-log" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
+                <button onclick="switchTab('incidents-log')" id="tab-incidents-log" class="tab-btn px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
                     🚨 Incidents (<span id="badge-incident-count">0</span>)
                 </button>
-                <button onclick="switchTab('voice-vault')" id="tab-voice-vault" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
+                <button onclick="switchTab('voice-vault')" id="tab-voice-vault" class="tab-btn px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
                     👤 Voice Vault
                 </button>
             </nav>
 
-            <!-- Status Badge -->
-            <div class="flex items-center space-x-3">
+            <!-- Status Badge (Desktop) -->
+            <div class="hidden sm:flex items-center space-x-3">
                 <div class="flex items-center space-x-2 bg-emerald-950/40 border border-emerald-800/60 px-3 py-1.5 rounded-full">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
